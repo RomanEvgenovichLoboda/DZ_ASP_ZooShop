@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DZ_ASP_ZooShop", "DZ_ASP_ZooShop\DZ_ASP_ZooShop.csproj", "{6664F2E1-A920-477F-8D31-E285BC7DFDA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DZ_ASP_ZooShop", "DZ_ASP_ZooShop\DZ_ASP_ZooShop.csproj", "{6664F2E1-A920-477F-8D31-E285BC7DFDA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryForZooShop", "LibraryForZooShop\LibraryForZooShop.csproj", "{78139865-F02B-4811-BB9C-81FEBE5843C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{6664F2E1-A920-477F-8D31-E285BC7DFDA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6664F2E1-A920-477F-8D31-E285BC7DFDA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6664F2E1-A920-477F-8D31-E285BC7DFDA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78139865-F02B-4811-BB9C-81FEBE5843C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78139865-F02B-4811-BB9C-81FEBE5843C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78139865-F02B-4811-BB9C-81FEBE5843C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78139865-F02B-4811-BB9C-81FEBE5843C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

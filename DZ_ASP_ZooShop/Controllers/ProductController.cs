@@ -1,4 +1,5 @@
 ﻿using DZ_ASP_ZooShop.Models;
+using LibraryForZooShop.Models.Repositorys;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DZ_ASP_ZooShop.Controllers
@@ -8,23 +9,14 @@ namespace DZ_ASP_ZooShop.Controllers
     public class ProductController
     {
         [HttpGet("GetAllProducts")]
-        public IEnumerable<Product> GetAllProductss()
+        public IEnumerable<Product> GetAllProducts()
         {
-            ProductContext context = new ProductContext();
-            return context.Products;
+            return ProductRepository.GetAllProducts();
         }
         [HttpPost("AddOneProduct")]
         public string AddOneProduct(string prod, string anim)
         {
-            Product pr = new Product();
-            pr.Name = prod;
-            pr.Animal = new Animal();
-            pr.Animal.Name = anim;
-            ProductContext context = new ProductContext();
-            context.Products.Add(pr);
-            context.SaveChanges();
-            return "Added!";//context.Products;
-
+            return ProductRepository.AddOneProduct(prod, anim);
         }
     }
 }
