@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using LibraryForZooShop.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 namespace DZ_ASP_ZooShop.Models
@@ -6,7 +7,10 @@ namespace DZ_ASP_ZooShop.Models
     public class ProductContext: DbContext
     {
         public DbSet<Product> Products { get; set; }
+        public DbSet<Clothing> Clothings { get; set; }
         public DbSet<Animal> Animals { get; set; }
+        public DbSet<Medicine> Medicines { get; set; }
+        public DbSet<Toy> Toys { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //new ConfigurationBuilder().AddUserSecrets<ProductContext>()

@@ -9,26 +9,45 @@ namespace LibraryForZooShop.Models.Repositorys
 {
     public static class ProductRepository
     {
-        public static string AddOneProduct(string prodName,string animalName)
+        public static string AddOneProduct(string prodName,string animalName, double _price, ModelProd pr)
         {
             ProductContext context = new ProductContext();
-            foreach (var item in context.Products)
+
+            IEnumerable<ModelProd> list = new List<ModelProd>();
+            if (pr.GetType() == typeof(Product)) list = context.Products;
+            else if (pr.GetType() == typeof(Clothing)) list = context.Clothings;
+            else if (pr.GetType() == typeof(Medicine)) list = context.Medicines;
+            else if (pr.GetType() == typeof(Toy)) list = context.Toys;
+
+            foreach (var item in list)
             {
                 if (prodName.ToLower() == item.Name.ToLower()) return "Has already!";
             }
+
             int?id = context.Animals.FirstOrDefault(e => e.Name.ToLower() == animalName.ToLower())?.Id;
-            Product pr = new Product();
+            //Product pr = new Product();
             pr.Name = prodName;
+            pr.Price = _price;
             if (id == null)
             {
                 pr.Animal = new Animal();
                 pr.Animal.Name = animalName;
             }
             else pr.AnimalId = (int)id;
-            context.Products.Add(pr);
+            if(pr.GetType() == typeof(Product)) context.Products.Add((Product)pr);
+            else if (pr.GetType() == typeof(Clothing)) context.Clothings.Add((Clothing)pr);
+            else if (pr.GetType() == typeof(Medicine)) context.Medicines.Add((Medicine)pr);
+            else if (pr.GetType() == typeof(Toy)) context.Toys.Add((Toy)pr);
             context.SaveChanges();
             return "Added!";
         }
-        public static IEnumerable<Product> GetAllProducts() => new ProductContext().Products;
+        public static IEnumerable<ModelProd> GetAllProducts(ModelProd pr) 
+        {
+            if (pr.GetType() == typeof(Product)) return new ProductContext().Products;
+            else if (pr.GetType() == typeof(Clothing)) return new ProductContext().Clothings;
+            else if (pr.GetType() == typeof(Medicine)) return new ProductContext().Medicines;
+            else if (pr.GetType() == typeof(Toy)) return new ProductContext().Toys;
+            else return null;
+        }
     }
 }

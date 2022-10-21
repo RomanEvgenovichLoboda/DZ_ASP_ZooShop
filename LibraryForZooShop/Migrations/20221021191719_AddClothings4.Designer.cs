@@ -3,6 +3,7 @@ using DZ_ASP_ZooShop.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DZ_ASP_ZooShop.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    partial class ProductContextModelSnapshot : ModelSnapshot
+    [Migration("20221021191719_AddClothings4")]
+    partial class AddClothings4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -88,56 +90,6 @@ namespace DZ_ASP_ZooShop.Migrations
                     b.ToTable("Clothings");
                 });
 
-            modelBuilder.Entity("LibraryForZooShop.Models.Medicine", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("AnimalId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AnimalId");
-
-                    b.ToTable("Medicines");
-                });
-
-            modelBuilder.Entity("LibraryForZooShop.Models.Toy", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("AnimalId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AnimalId");
-
-                    b.ToTable("Toys");
-                });
-
             modelBuilder.Entity("DZ_ASP_ZooShop.Models.Product", b =>
                 {
                     b.HasOne("DZ_ASP_ZooShop.Models.Animal", "Animal")
@@ -160,37 +112,11 @@ namespace DZ_ASP_ZooShop.Migrations
                     b.Navigation("Animal");
                 });
 
-            modelBuilder.Entity("LibraryForZooShop.Models.Medicine", b =>
-                {
-                    b.HasOne("DZ_ASP_ZooShop.Models.Animal", "Animal")
-                        .WithMany("Medicines")
-                        .HasForeignKey("AnimalId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Animal");
-                });
-
-            modelBuilder.Entity("LibraryForZooShop.Models.Toy", b =>
-                {
-                    b.HasOne("DZ_ASP_ZooShop.Models.Animal", "Animal")
-                        .WithMany("Toys")
-                        .HasForeignKey("AnimalId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Animal");
-                });
-
             modelBuilder.Entity("DZ_ASP_ZooShop.Models.Animal", b =>
                 {
                     b.Navigation("Clothings");
 
-                    b.Navigation("Medicines");
-
                     b.Navigation("Products");
-
-                    b.Navigation("Toys");
                 });
 #pragma warning restore 612, 618
         }

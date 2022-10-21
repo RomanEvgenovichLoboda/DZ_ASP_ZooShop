@@ -11,12 +11,12 @@ namespace DZ_ASP_ZooShop.Controllers
         [HttpGet("GetAllProducts")]
         public IEnumerable<Product> GetAllProducts()
         {
-            return ProductRepository.GetAllProducts();
+            return (IEnumerable<Product>)ProductRepository.GetAllProducts(new Product());
         }
         [HttpPost("AddOneProduct")]
-        public string AddOneProduct(string prod, string anim)
+        public string AddOneProduct(string prod, string anim, double _price)
         {
-            return ProductRepository.AddOneProduct(prod, anim);
+            return ProductRepository.AddOneProduct(prod, anim, _price,new Product());
         }
     }
 }
