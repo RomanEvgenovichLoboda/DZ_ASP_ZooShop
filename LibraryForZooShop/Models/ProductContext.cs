@@ -11,6 +11,8 @@ namespace DZ_ASP_ZooShop.Models
         public DbSet<Animal> Animals { get; set; }
         public DbSet<Medicine> Medicines { get; set; }
         public DbSet<Toy> Toys { get; set; }
+        public DbSet<Container> Containers { get; set; }
+        public DbSet<Building> Buildings { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //new ConfigurationBuilder().AddUserSecrets<ProductContext>()

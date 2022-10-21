@@ -18,11 +18,10 @@ namespace LibraryForZooShop.Models.Repositorys
             else if (pr.GetType() == typeof(Clothing)) list = context.Clothings;
             else if (pr.GetType() == typeof(Medicine)) list = context.Medicines;
             else if (pr.GetType() == typeof(Toy)) list = context.Toys;
+            else if (pr.GetType() == typeof(Container)) list = context.Containers;
+            else if (pr.GetType() == typeof(Building)) list = context.Buildings;
 
-            foreach (var item in list)
-            {
-                if (prodName.ToLower() == item.Name.ToLower()) return "Has already!";
-            }
+            foreach (var item in list) { if (prodName.ToLower() == item.Name.ToLower()) return "Has already!"; }
 
             int?id = context.Animals.FirstOrDefault(e => e.Name.ToLower() == animalName.ToLower())?.Id;
             //Product pr = new Product();
@@ -38,6 +37,8 @@ namespace LibraryForZooShop.Models.Repositorys
             else if (pr.GetType() == typeof(Clothing)) context.Clothings.Add((Clothing)pr);
             else if (pr.GetType() == typeof(Medicine)) context.Medicines.Add((Medicine)pr);
             else if (pr.GetType() == typeof(Toy)) context.Toys.Add((Toy)pr);
+            else if (pr.GetType() == typeof(Container)) context.Containers.Add((Container)pr);
+            else if (pr.GetType() == typeof(Building)) context.Buildings.Add((Building)pr);
             context.SaveChanges();
             return "Added!";
         }
@@ -47,6 +48,8 @@ namespace LibraryForZooShop.Models.Repositorys
             else if (pr.GetType() == typeof(Clothing)) return new ProductContext().Clothings;
             else if (pr.GetType() == typeof(Medicine)) return new ProductContext().Medicines;
             else if (pr.GetType() == typeof(Toy)) return new ProductContext().Toys;
+            else if (pr.GetType() == typeof(Container)) return new ProductContext().Containers;
+            else if (pr.GetType() == typeof(Building)) return new ProductContext().Buildings;
             else return null;
         }
     }
