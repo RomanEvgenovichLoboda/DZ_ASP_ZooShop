@@ -14,9 +14,15 @@ namespace DZ_ASP_ZooShop.Controllers
             return (IEnumerable<Toy>)ProductRepository.GetAllProducts(new Toy());
         }
         [HttpPost("AddOneToy")]
-        public string AddOneToy(string prod, string anim, double _price)
+        public string AddOneToy([FromForm]Data data)
         {
-            return ProductRepository.AddOneProduct(prod, anim, _price, new Toy());
+            return ProductRepository.AddOneProduct(data.Product, data.Animal, data.Price, new Toy());
         }
+        //public string AddOneToy(string prod, string anim, double _price)
+        //{
+        //    return ProductRepository.AddOneProduct(prod, anim, _price, new Toy());
+        //}
     }
+    
+
 }
