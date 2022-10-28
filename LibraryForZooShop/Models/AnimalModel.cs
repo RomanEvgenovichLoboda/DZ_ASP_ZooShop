@@ -7,11 +7,11 @@ namespace DZ_ASP_ZooShop.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public List<Product> Products { get; set; }
-        public List<Clothing> Clothings { get; set; }
-        public List<Medicine> Medicines { get; set; }
-        public List<Toy> Toys { get; set; }
-        public List<Container> Containers { get; set; }
-        public List<Building> Buildings { get; set; }
+        public List<Product> Products { get; set; } = new();
+        public List<Clothing> Clothings { get; set; } = new();
+        public List<Medicine> Medicines { get; set; } = new();
+        public List<Toy> Toys { get; set; } = new();
+        public List<Container> Containers { get; set; } = new();
+        public List<Building> Buildings { get; set; } = new();
     }
 }

@@ -8,13 +8,19 @@ namespace DZ_ASP_ZooShop.Controllers
     [Route("[controller]")]
     public class AnimalController
     {
+       // AnimalRepository animalRepository = new AnimalRepository();
         [HttpGet("GetAllAnimals")]
         public IEnumerable<Animal> GetAllAnimals()
         {
             return AnimalRepository.GetAllAnimals();
         }
-        [HttpPost("AddOneAnimals")]
-        public string AddOneAnimals(string anim)
+        //[HttpPost("AddOneAnimals")]
+        //public string AddOneAnimals(string anim)
+        //{
+        //    return AnimalRepository.AddOneAnimal(anim);
+        //}
+        [HttpPost("AddOneAnimal")]
+        public string AddOneAnimal([FromForm]Animal anim)
         {
             return AnimalRepository.AddOneAnimal(anim);
         }
